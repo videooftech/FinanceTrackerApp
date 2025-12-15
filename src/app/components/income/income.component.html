@@ -1,0 +1,10 @@
+<h2>Income</h2>
+
+<div>
+  <input placeholder="Source" [(ngModel)]="newIncome.source">
+  <input type="number" placeholder="Amount" [(ngModel)]="newIncome.amount">
+  <input type="date" [(ngModel)]="newIncome.date">
+  <button (click)="addIncome()">Add Income</button>
+</div>
+
+<pre>{{ incomeList | json }}</pre>

@@ -1,58 +1,27 @@
-# Finance Tracker (Angular + .NET API)
+# FinanceTrackerUi
 
-A full-stack Finance Tracker application built with **Angular** (frontend) and **ASP.NET Core Web API** (backend).  
-The app allows users to manage **Income** and **Expense** entries with clean routing, modular components, and API integration.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.0.
 
----
+## Development server
 
-## 📁 Project Structure
-finance-tracker/ │ 
-  ├── finance-tracker-api/   # ASP.NET Core Web API │   
-    ├── Controllers/ │   
-    ├── Models/ │   
-    ├── Program.cs │   
-    └── ... 
-  │ └── finance-tracker-ui/   # Angular Frontend     
-    ├── src/app/components/ │   
-    ├── income/ 
-    │── expense/ 
-    ├── src/app/services/ 
-    ├── src/app/models/ 
-    |── ..
-    
----
-## ✅ Features
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-### **Backend (ASP.NET Core API)**
-- Income API  
-  - `GET /api/income`
-  - `POST /api/income`
-- Expense API  
-  - `GET /api/expense`
-  - `POST /api/expense`
-- CORS enabled for Angular
-- In-memory data storage (DB integration coming soon)
+## Code scaffolding
 
-### **Frontend (Angular)**
-- Separate components:
-  - `/income`
-  - `/expense`
-- Angular routing
-- Services for API communication
-- Models for strong typing
-- Forms for adding entries
-- Live list updates
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
----
-## 🚀 Getting Started
+## Build
 
-### **1. Clone the Repository**
-```bash
-git clone https://github.com/<your-username>/<repo-name>.git
-cd finance-tracker
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
+## Running unit tests
 
-🖥️ Backend Setup (ASP.NET Core API)
-Install dependencies
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-  
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via a platform of your choice.
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

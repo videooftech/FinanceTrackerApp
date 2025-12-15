@@ -1,0 +1,10 @@
+<h2>Expense</h2>
+
+<div>
+  <input placeholder="Category" [(ngModel)]="newExpense.category">
+  <input type="number" placeholder="Amount" [(ngModel)]="newExpense.amount">
+  <input type="date" [(ngModel)]="newExpense.date">
+  <button (click)="addExpense()">Add Expense</button>
+</div>
+
+<pre>{{ expenseList | json }}</pre>
