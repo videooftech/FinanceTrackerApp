@@ -13,6 +13,6 @@
   font-size: 20px;
 }
 
-.income { background: #2ecc71; }
-.expense { background: #e74c3c; }
-.balance { background: #3498db; }
+.income { background: #12e76b;   font-weight: bold; }
+.expense { background: #e74c3c;   font-weight: bold; }
+.balance { background: #3498db; font-weight: bold;  }

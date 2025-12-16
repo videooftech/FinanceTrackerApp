@@ -1,10 +1,45 @@
 <h2>Income</h2>
 
 <div>
-  <input placeholder="Source" [(ngModel)]="newIncome.source">
+  <input placeholder="source" [(ngModel)]="newIncome.source">
   <input type="number" placeholder="Amount" [(ngModel)]="newIncome.amount">
   <input type="date" [(ngModel)]="newIncome.date">
   <button (click)="addIncome()">Add Income</button>
 </div>
 
-<pre>{{ incomeList | json }}</pre>
+<h2>Income List</h2>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Amount</th>
+    <th>Date</th>
+    <th>Actions</th>
+  </tr>
+
+  <tr *ngFor="let item of incomeList">
+
+    <!-- Normal View -->
+    <ng-container *ngIf="!editing || editData.id !== item.id">
+      <td>{{ item.source }}</td>
+      <td [ngClass]="'income-amount'">{{ item.amount | currency:'INR' }}</td>
+      <td>{{ item.date | date:'dd-MMM-yyyy' }}</td>
+      <td>
+        <button (click)="startEdit(item)">Edit</button>
+        <button (click)="deleteIncome(item.id)">Delete</button>
+      </td>
+    </ng-container>
+
+    <!-- Edit Mode -->
+    <ng-container *ngIf="editing && editData.id === item.id">
+      <td><input [(ngModel)]="editData.source"></td>
+      <td><input type="number" [(ngModel)]="editData.amount"></td>
+      <td><input type="date" [(ngModel)]="editData.date"></td>
+      <td>
+        <button (click)="saveEdit()">Save</button>
+        <button (click)="cancelEdit()">Cancel</button>
+      </td>
+    </ng-container>
+
+  </tr>
+</table>

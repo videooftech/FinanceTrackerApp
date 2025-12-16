@@ -20,4 +20,12 @@ export class ExpenseService {
   addExpense(data: Omit<Expense, 'id'>): Observable<Expense> {
     return this.http.post<Expense>(`${this.baseUrl}/api/expense`, data);
   }
+
+  updateExpense(id: number, data: Expense) {
+    return this.http.put(`${this.baseUrl}/api/expense/${id}`, data);
+  }
+
+  deleteExpense(id: number) {
+    return this.http.delete(`${this.baseUrl}/api/expense/${id}`);
+  }
 }

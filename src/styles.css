@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+.income-amount { 
+    color: green; 
+    font-weight: bold; 
+}
+
+.expense-amount { 
+    color: red; 
+    font-weight: bold ; 
+}

@@ -20,4 +20,12 @@ export class IncomeService {
   addIncome(data: Omit<Income, 'id'>): Observable<Income> {
     return this.http.post<Income>(`${this.baseUrl}/api/income`, data);
   }
+
+  updateIncome(id: number, data: Income): Observable<Income> {
+    return this.http.put<Income>(`${this.baseUrl}/api/income/${id}`, data);
+  }
+
+  deleteIncome(id: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/api/income/${id}`);
+  }
 }

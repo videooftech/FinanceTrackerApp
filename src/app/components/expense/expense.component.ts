@@ -8,6 +8,9 @@ import { Expense } from '../../models/expense.model';
 })
 export class ExpenseComponent implements OnInit {
 
+  editing: boolean = false;
+  editData: Expense = { id: 0, category: '', amount: 0, date: '' };
+
   expenseList: Expense[] = [];
 
   newExpense: Omit<Expense, 'id'>
@@ -35,4 +38,32 @@ export class ExpenseComponent implements OnInit {
       this.newExpense = { category: '', amount: 0, date: '' };
     });
   }
+
+  startEdit(item: Expense) {
+    this.editing = true;
+    this.editData = { ...item };
+  }
+
+  cancelEdit() {
+    this.editing = false;
+  }
+
+  saveEdit() {
+     this.expenseService.updateExpense(this.editData.id, this.editData)
+       .subscribe(() => {
+         this.loadExpenses();
+         this.editing = false;
+       });
+  }
+
+  deleteExpense(id: number) {
+    if (confirm("Are you sure you want to delete this expense?")) {
+       this.expenseService.deleteExpense(id).subscribe(() => {
+      console.log("Deleted, refreshing list...");
+
+       this.loadExpenses();
+      });
+    }
+  }
+
 }

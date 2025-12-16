@@ -7,4 +7,44 @@
   <button (click)="addExpense()">Add Expense</button>
 </div>
 
-<pre>{{ expenseList | json }}</pre>
+<h2>Expense List</h2>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Amount</th>
+    <th>Date</th>
+    <th>Actions</th>
+  </tr>
+
+  <tr *ngFor="let item of expenseList">
+
+    <!-- Normal View -->
+    <ng-container *ngIf="!editing || editData.id !== item.id">
+      <td>{{ item.category }}</td>
+
+      <td class="expense-amount">
+        {{ item.amount | currency:'INR' }}
+      </td>
+
+      <td>{{ item.date | date:'dd-MMM-yyyy' }}</td>
+
+      <td>
+        <button (click)="startEdit(item)">Edit</button>
+        <button (click)="deleteExpense(item.id)">Delete</button>
+      </td>
+    </ng-container>
+
+    <!-- Edit Mode -->
+    <ng-container *ngIf="editing && editData.id === item.id">
+      <td><input [(ngModel)]="editData.category"></td>
+      <td><input type="number" [(ngModel)]="editData.amount"></td>
+      <td><input type="date" [(ngModel)]="editData.date"></td>
+      <td>
+        <button (click)="saveEdit()">Save</button>
+        <button (click)="cancelEdit()">Cancel</button>
+      </td>
+    </ng-container>
+
+  </tr>
+</table>
