@@ -1,5 +1,11 @@
-.income-amount { 
-    color: green; 
-    font-weight: bold; 
-}
+
+.card { margin-bottom: 12px }
+
+.table td .input { width:100% }
+
+.actions { display:flex; gap:8px; align-items:center }
+
+.btn-ghost { border:1px solid #e6e9ef; background:transparent }
+
+.income-amount { color: var(--success); font-weight:700 }
 

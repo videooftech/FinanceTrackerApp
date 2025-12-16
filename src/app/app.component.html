@@ -1,11 +1,30 @@
-<h1>Finance Tracker</h1>
+<div class="app-shell">
+  <header class="site-header card">
+    <div class="brand">
+      <div class="logo">💼</div>
+      <div>
+        <div class="app-title">Finance Tracker</div>
+        <div class="app-sub">Personal budgeting made simple</div>
+      </div>
+    </div>
 
-<nav>
-  <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a> |
-  <a routerLink="/income" routerLinkActive="active">Income</a> |
-  <a routerLink="/expense" routerLinkActive="active">Expense</a>
-</nav>
+    <nav class="main-nav">
+      <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+      <a routerLink="/income" routerLinkActive="active">Income</a>
+      <a routerLink="/expense" routerLinkActive="active">Expense</a>
+    </nav>
+  </header>
 
-<hr>
+  <main class="app-container card" role="main">
+    <router-outlet></router-outlet>
+  </main>
 
-<router-outlet></router-outlet>
+  <footer class="site-footer card">
+    <div>© {{ 2025 }} Finance Tracker</div>
+    <div class="footer-links">
+      <a href="#">Help</a>
+      <a href="#">Privacy</a>
+      <a href="#">Contact</a>
+    </div>
+  </footer>
+</div>

@@ -1,50 +1,58 @@
-<h2>Expense</h2>
+<div class="app-container">
+  <div class="page-header">
+    <div>
+      <div class="title">Expenses</div>
+      <div class="subtitle">Track and categorize your spending</div>
+    </div>
+  </div>
 
-<div>
-  <input placeholder="Category" [(ngModel)]="newExpense.category">
-  <input type="number" placeholder="Amount" [(ngModel)]="newExpense.amount">
-  <input type="date" [(ngModel)]="newExpense.date">
-  <button (click)="addExpense()">Add Expense</button>
+  <div class="card">
+    <div class="form-row">
+      <input class="input" placeholder="Category" [(ngModel)]="newExpense.category">
+      <input class="input" type="number" placeholder="Amount" [(ngModel)]="newExpense.amount">
+      <input class="input" type="date" [(ngModel)]="newExpense.date">
+      <button class="btn btn-primary" (click)="addExpense()">Add Expense</button>
+    </div>
+  </div>
+
+  <div style="height:12px"></div>
+
+  <div class="card">
+    <div class="title">Expense List</div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Amount</th>
+          <th>Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of expenseList">
+
+          <ng-container *ngIf="!editing || editData.id !== item.id">
+            <td>{{ item.category }}</td>
+            <td class="expense-amount">{{ item.amount | currency:'INR' }}</td>
+            <td>{{ item.date | date:'dd-MMM-yyyy' }}</td>
+            <td class="actions">
+              <button class="btn btn-ghost" (click)="startEdit(item)">Edit</button>
+              <button class="btn btn-danger" (click)="deleteExpense(item.id)">Delete</button>
+            </td>
+          </ng-container>
+
+          <ng-container *ngIf="editing && editData.id === item.id">
+            <td><input class="input" [(ngModel)]="editData.category"></td>
+            <td><input class="input" type="number" [(ngModel)]="editData.amount"></td>
+            <td><input class="input" type="date" [(ngModel)]="editData.date"></td>
+            <td>
+              <button class="btn btn-primary" (click)="saveEdit()">Save</button>
+              <button class="btn btn-ghost" (click)="cancelEdit()">Cancel</button>
+            </td>
+          </ng-container>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
-
-<h2>Expense List</h2>
-
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Amount</th>
-    <th>Date</th>
-    <th>Actions</th>
-  </tr>
-
-  <tr *ngFor="let item of expenseList">
-
-    <!-- Normal View -->
-    <ng-container *ngIf="!editing || editData.id !== item.id">
-      <td>{{ item.category }}</td>
-
-      <td class="expense-amount">
-        {{ item.amount | currency:'INR' }}
-      </td>
-
-      <td>{{ item.date | date:'dd-MMM-yyyy' }}</td>
-
-      <td>
-        <button (click)="startEdit(item)">Edit</button>
-        <button (click)="deleteExpense(item.id)">Delete</button>
-      </td>
-    </ng-container>
-
-    <!-- Edit Mode -->
-    <ng-container *ngIf="editing && editData.id === item.id">
-      <td><input [(ngModel)]="editData.category"></td>
-      <td><input type="number" [(ngModel)]="editData.amount"></td>
-      <td><input type="date" [(ngModel)]="editData.date"></td>
-      <td>
-        <button (click)="saveEdit()">Save</button>
-        <button (click)="cancelEdit()">Cancel</button>
-      </td>
-    </ng-container>
-
-  </tr>
-</table>
